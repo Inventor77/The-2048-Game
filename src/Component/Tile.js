@@ -1,9 +1,10 @@
 import React from "react";
 
-function Tile() {
+function Tile(props) {
+  const { value } = props;
   return (
     <div className="tile">
-      <span className="tile_value">{}</span>
+      <span className="tile_value">{value}</span>
     </div>
   );
 }

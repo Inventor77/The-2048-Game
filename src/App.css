@@ -1,3 +1,9 @@
 .App {
   text-align: center;
 }
+
+.gameover_container,
+header,
+footer {
+  display: none;
+}

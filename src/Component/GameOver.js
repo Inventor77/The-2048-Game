@@ -2,9 +2,11 @@ import React from "react";
 
 function GameOver() {
   return (
-    <div className="container">
+    <div className="gameover_container">
       <span className="message">Game over!</span>
-      <button className="action_btn">Try again</button>
+      <div className="btn_container">
+        <button className="action_btn">Try again</button>
+      </div>
     </div>
   );
 }

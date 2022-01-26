@@ -27,7 +27,9 @@ function Header() {
             <span className="score_value">3100 </span>
           </div>
         </div>
-        <button className="action_btn">New Game</button>
+        <div className="btn_container">
+          <button className="action_btn">New Game</button>
+        </div>
       </div>
     </header>
   );
