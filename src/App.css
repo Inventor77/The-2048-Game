@@ -1,9 +1,132 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
 .App {
-  text-align: center;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	text-align: left;
+	height: 100vh;
+	width: 100vw;
+	padding: 36px;
+	background: #faf8ef;
+	color: #776e65;
+	font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+.highlight_text {
+	font-weight: bold;
 }
 
 .gameover_container,
-header,
+/* header, */
+.game_board,
 footer {
-  display: none;
+	display: none;
 }
+
+.game_container {
+	/* background: #afaf; */
+	max-width: 500px;
+	width: 500px;
+}
+
+/* ---------------- Header ---------------- */
+
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.header_left {
+	padding-top: 16px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 12px;
+}
+
+.header_title {
+	font-size: 80px;
+}
+.header_subtitle {
+	font-size: 18px;
+}
+
+.game_rules {
+	width: fit-content;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 8px;
+	border-bottom: 1px solid #776e65;
+}
+
+.header_right {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-end;
+  gap: 48px;
+}
+
+.score_board {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+}
+.score {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	padding: 6px 25px;
+	border-radius: 3px;
+	background: #bbada0;
+}
+.score_head {
+	font-size: 13px;
+	color: #eee4da;
+	font-weight: bold;
+}
+.score_value {
+	font-size: 24px;
+	font-weight: 900;
+	color: #fff;
+}
+/* ------------- End of Header ------------ */
+
+/* _________ Button _________ */
+
+.btn_container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.action_btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #8f7a66;
+	border-radius: 3px;
+	padding: 0 20px;
+	color: #f9f6f2;
+	height: 40px;
+	cursor: pointer;
+	text-align: center;
+	flex-shrink: 0;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* _____ End of Button ______ */
+
+
