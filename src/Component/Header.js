@@ -3,7 +3,7 @@ import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 
 function Header() {
 	return (
-		<header>
+		<header className="header">
 			<div className="header_left">
 				<div className="header_title highlight_text">2048</div>
 				<div className="header_subtitle">

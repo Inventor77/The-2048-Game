@@ -21,10 +21,7 @@
 	font-weight: bold;
 }
 
-.gameover_container,
-/* header, */
-.game_board,
-footer {
+.gameover_container {
 	display: none;
 }
 
@@ -36,7 +33,7 @@ footer {
 
 /* ---------------- Header ---------------- */
 
-header {
+.header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -64,6 +61,8 @@ header {
 	justify-content: flex-start;
 	gap: 8px;
 	border-bottom: 1px solid #776e65;
+	cursor: pointer;
+	margin-top: 4px;
 }
 
 .header_right {
@@ -71,7 +70,7 @@ header {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: flex-end;
-  gap: 48px;
+	gap: 48px;
 }
 
 .score_board {
@@ -86,7 +85,7 @@ header {
 	align-items: center;
 	justify-content: center;
 	gap: 4px;
-	padding: 6px 25px;
+	padding: 10px 0px 4px 0px;
 	border-radius: 3px;
 	background: #bbada0;
 }
@@ -99,6 +98,7 @@ header {
 	font-size: 24px;
 	font-weight: 900;
 	color: #fff;
+	padding: 0px 30px;
 }
 /* ------------- End of Header ------------ */
 
@@ -122,11 +122,60 @@ header {
 	cursor: pointer;
 	text-align: center;
 	flex-shrink: 0;
-  border: none;
-  font-size: 18px;
-  font-weight: bold;
+	border: none;
+	font-size: 18px;
+	font-weight: bold;
 }
 
 /* _____ End of Button ______ */
 
+/* ---------------- Footer --------------- */
 
+.footer {
+	font-size: 18px;
+}
+
+/* ------------- End of Footer ------------ */
+
+/* -------------- GameBoard ------------------ */
+
+.game_board {
+	margin: 32px 0px;
+	padding: 15px;
+	background: #bbada0;
+	width: 500px;
+	height: 500px;
+	border-radius: 6px;
+}
+
+.tile_container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 15px;
+	width: 100%;
+	height: 100%;
+}
+
+/* ------- Tiles -------- */
+
+.tile4 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	height: 22.5%;
+	width: 22.5%;
+	border-radius: 3px;
+	background: #eee4da59;
+}
+.tile_value {
+	color: #776e65;
+	font-weight: 900;
+	font-size: 54px;
+}
+
+/* ---- End of Tiles ---- */
+
+/* ------------- End of GameBoard ------------- */

@@ -6,9 +6,9 @@ function GameBoard(props) {
   const { sideLength } = props;
   const [tileValueArray, setTileValueArray] = useState([]);
 
-  function twoAtRamdom(arr) {
+  function twoAtRandom(arr) {
     let idx = Math.floor(Math.random() * arr.length);
-    arr[idx] === 0 ? (arr[idx] = 2) : twoAtRamdom(arr);
+    arr[idx] === 0 ? (arr[idx] = 2) : twoAtRandom(arr);
   }
 
   function generateArray() {
@@ -16,8 +16,8 @@ function GameBoard(props) {
     for (let i = 0; i < sideLength * sideLength; i++) {
       array.push(0);
     }
-    twoAtRamdom(array);
-    twoAtRamdom(array);
+    twoAtRandom(array);
+    twoAtRandom(array);
     setTileValueArray([...array]);
   }
 
@@ -29,6 +29,7 @@ function GameBoard(props) {
     <div className="game_board">
       <div className="tile_container">
         {tileValueArray.map((tileValue, idx) => (
+          
           <Tile key={idx} value={tileValue} />
         ))}
         <GameOver />

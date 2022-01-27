@@ -3,7 +3,7 @@ import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 
 function Footer() {
   return (
-    <footer>
+    <footer className="footer">
       <div className="footer_info">
         <span className="highlight_text"> HOW TO PLAY: </span>
         Use your <span className="highlight_text"> arrow keys</span> to move the
