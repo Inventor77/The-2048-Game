@@ -5,7 +5,7 @@ import Footer from "./Component/Footer";
 import GameBoard from "./Component/GameBoard";
 
 function App() {
-	const [sidelength, setSideLength] = useState(4);
+	const [sideLength, setSideLength] = useState(4);
 	const changeBoardSideLength = () => {
 		setSideLength((prevState) => prevState + 4);
 	};
@@ -14,7 +14,7 @@ function App() {
 		<div className="App">
 			<div className="game_container">
 				<Header changeSideLength={changeBoardSideLength} />
-				<GameBoard sideLength={sidelength} />
+				<GameBoard sideLength={sideLength} />
 				<Footer />
 			</div>
 		</div>
