@@ -1,8 +1,9 @@
 import { addElements } from "./addElements";
 import { transpose } from "./Transpose";
+import { conditionalRandomNumber } from "./conditionalRandomNumber";
 
-// Function on invoked on Left Key Pressed
-export const onLeftKeyPressed = (array) => {
+// Function invoked on Left Key Pressed
+export function onLeftKeyPressed(array) {
 	// let clone = array;
 	let clone = [
 		[0, 0, 4, 4],
@@ -20,11 +21,12 @@ export const onLeftKeyPressed = (array) => {
 			zeroElements.push(0);
 		return noZeroElements.concat(zeroElements);
 	});
+	newClone = conditionalRandomNumber(newClone);
 	console.log("left", newClone);
-};
+}
 
-// Function on invoked on Right Key Pressed
-export const onRightKeyPressed = (array) => {
+// Function invoked on Right Key Pressed
+export function onRightKeyPressed(array) {
 	// let clone = array;
 	let clone = [
 		[0, 0, 4, 4],
@@ -42,11 +44,12 @@ export const onRightKeyPressed = (array) => {
 			zeroElements.push(0);
 		return zeroElements.concat(noZeroElements);
 	});
+	newClone = conditionalRandomNumber(newClone);
 	console.log("right", newClone);
-};
+}
 
-// Function on invoked on Up Key Pressed
-export const onUpKeyPressed = (array) => {
+// Function invoked on Up Key Pressed
+export function onUpKeyPressed(array) {
 	// let clone = array;
 	let clone = [
 		[0, 0, 4, 4],
@@ -72,11 +75,12 @@ export const onUpKeyPressed = (array) => {
 		return noZeroElements.concat(zeroElements);
 	});
 	newClone = transpose(newClone);
+	newClone = conditionalRandomNumber(newClone);
 	console.log("up", newClone);
-};
+}
 
-// Function on invoked on Down Key Pressed
-export const onDownKeyPressed = (array) => {
+// Function invoked on Down Key Pressed
+export function onDownKeyPressed(array) {
 	// let clone = array;
 	let clone = [
 		[0, 0, 4, 4],
@@ -102,5 +106,6 @@ export const onDownKeyPressed = (array) => {
 		return zeroElements.concat(noZeroElements);
 	});
 	newClone = transpose(newClone);
+	newClone = conditionalRandomNumber(newClone);
 	console.log("down", newClone);
-};
+}
