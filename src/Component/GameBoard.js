@@ -5,15 +5,17 @@ import GameOver from "./GameOver";
 import { twoAtRandom } from "../Utils/randomNumber";
 import { v4 as uuidv4 } from "uuid";
 
-///////////////////////
-import { addElements } from "../Utils/addElements";
-import { transpose } from "../Utils/Transpose";
-import { conditionalRandomNumber } from "../Utils/conditionalRandomNumber";
-//////////////////////
+import {
+	onLeftKeyPressed,
+	onRightKeyPressed,
+	onUpKeyPressed,
+	onDownKeyPressed,
+} from "../Utils/onKeyPressed";
 
 function GameBoard(props) {
 	const { sideLength } = props;
 	const [tileValueArray, setTileValueArray] = useState([]);
+	const [gameOver, setGameOver] = useState(false);
 
 	// Function to initialize Array on Load/Refresh
 	function generateArray() {
@@ -35,118 +37,8 @@ function GameBoard(props) {
 		generateArray();
 	}, []);
 
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	// Function invoked on Left Key Pressed
-	function onLeftKeyPressed(array) {
-		let clone = array;
-		// let clone = [
-		// 	[0, 0, 4, 4],
-		// 	[4, 3, 0, 4],
-		// 	[2, 2, 2, 2],
-		// 	[2, 2, 2, 0],
-		// ];
-		let newClone = clone.map((row) => {
-			let noZeroElements = addElements(
-				row.filter((elem) => elem),
-				true
-			);
-			let zeroElements = [];
-			for (let i = 0; i < row.length - noZeroElements.length; i++)
-				zeroElements.push(0);
-			return noZeroElements.concat(zeroElements);
-		});
-		newClone = conditionalRandomNumber(newClone);
-		console.log("left", newClone);
-		setTileValueArray(newClone);
-	}
-
-	// Function invoked on Right Key Pressed
-	function onRightKeyPressed(array) {
-		let clone = array;
-		// let clone = [
-		// 	[0, 0, 4, 4],
-		// 	[4, 3, 0, 4],
-		// 	[2, 2, 2, 2],
-		// 	[2, 2, 2, 0],
-		// ];
-		let newClone = clone.map((row) => {
-			let noZeroElements = addElements(
-				row.filter((elem) => elem),
-				false
-			);
-			let zeroElements = [];
-			for (let i = 0; i < row.length - noZeroElements.length; i++)
-				zeroElements.push(0);
-			return zeroElements.concat(noZeroElements);
-		});
-		newClone = conditionalRandomNumber(newClone);
-		console.log("right", newClone);
-		setTileValueArray(newClone);
-	}
-
-	// Function invoked on Up Key Pressed
-	function onUpKeyPressed(array) {
-		let clone = array;
-		// let clone = [
-		// 	[0, 0, 4, 4],
-		// 	[4, 3, 0, 4],
-		// 	[2, 2, 2, 2],
-		// 	[2, 2, 2, 0],
-		// ];
-
-		// [0, 4, 2, 2]
-		// [0, 3, 2, 2]
-		// [4, 0, 2, 2]
-		// [4, 4, 2, 0]
-
-		clone = transpose(clone);
-		let newClone = clone.map((row) => {
-			let noZeroElements = addElements(
-				row.filter((elem) => elem),
-				true
-			);
-			let zeroElements = [];
-			for (let i = 0; i < row.length - noZeroElements.length; i++)
-				zeroElements.push(0);
-			return noZeroElements.concat(zeroElements);
-		});
-		newClone = transpose(newClone);
-		newClone = conditionalRandomNumber(newClone);
-		console.log("up", newClone);
-		setTileValueArray(newClone);
-	}
-
-	// Function invoked on Down Key Pressed
-	function onDownKeyPressed(array) {
-		let clone = array;
-		// let clone = [
-		// 	[0, 0, 4, 4],
-		// 	[4, 3, 0, 4],
-		// 	[2, 2, 2, 2],
-		// 	[2, 2, 2, 0],
-		// ];
-
-		// [0, 4, 2, 2]
-		// [0, 3, 2, 2]
-		// [4, 0, 2, 2]
-		// [4, 4, 2, 0]
-
-		clone = transpose(clone);
-		let newClone = clone.map((row) => {
-			let noZeroElements = addElements(
-				row.filter((elem) => elem),
-				false
-			);
-			let zeroElements = [];
-			for (let i = 0; i < row.length - noZeroElements.length; i++)
-				zeroElements.push(0);
-			return zeroElements.concat(noZeroElements);
-		});
-		newClone = transpose(newClone);
-		newClone = conditionalRandomNumber(newClone);
-		console.log("down", newClone);
-		setTileValueArray(newClone);
+	function setArray(arr) {
+		setTileValueArray(arr);
 	}
 
 	const left = 37;
@@ -155,27 +47,26 @@ function GameBoard(props) {
 	const down = 40;
 
 	function handleKeyEvent(event) {
-		// if (gameOver) {
-		// 	return;
-		// }
+		if (gameOver) {
+			return;
+		}
 		switch (event.keyCode) {
 			case left:
-				onLeftKeyPressed(tileValueArray);
+				onLeftKeyPressed(tileValueArray, setArray);
 				break;
 			case up:
-				onUpKeyPressed(tileValueArray);
+				onUpKeyPressed(tileValueArray, setArray);
 				break;
 			case right:
-				onRightKeyPressed(tileValueArray);
+				onRightKeyPressed(tileValueArray, setArray);
 				break;
 			case down:
-				onDownKeyPressed(tileValueArray);
+				onDownKeyPressed(tileValueArray, setArray);
 				break;
 			default:
 				break;
 		}
 	}
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// Handling Keydown Events
 	useEffect(() => {
@@ -184,6 +75,7 @@ function GameBoard(props) {
 			window.removeEventListener("keydown", handleKeyEvent);
 		};
 	});
+
 	return (
 		<div className="game_board">
 			<div className="tile_container">
@@ -192,7 +84,7 @@ function GameBoard(props) {
 						return <Tile key={uuidv4()} value={tileValue} />;
 					});
 				})}
-				<GameOver />
+				{gameOver ? <GameOver /> : ""}
 			</div>
 		</div>
 	);

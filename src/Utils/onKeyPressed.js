@@ -3,14 +3,8 @@ import { transpose } from "./Transpose";
 import { conditionalRandomNumber } from "./conditionalRandomNumber";
 
 // Function invoked on Left Key Pressed
-export function onLeftKeyPressed(array) {
-	// let clone = array;
-	let clone = [
-		[0, 0, 4, 4],
-		[4, 3, 0, 4],
-		[2, 2, 2, 2],
-		[2, 2, 2, 0],
-	];
+export function onLeftKeyPressed(array, setArray) {
+	let clone = array;
 	let newClone = clone.map((row) => {
 		let noZeroElements = addElements(
 			row.filter((elem) => elem),
@@ -22,18 +16,13 @@ export function onLeftKeyPressed(array) {
 		return noZeroElements.concat(zeroElements);
 	});
 	newClone = conditionalRandomNumber(newClone);
+	setArray(newClone);
 	console.log("left", newClone);
 }
 
 // Function invoked on Right Key Pressed
-export function onRightKeyPressed(array) {
-	// let clone = array;
-	let clone = [
-		[0, 0, 4, 4],
-		[4, 3, 0, 4],
-		[2, 2, 2, 2],
-		[2, 2, 2, 0],
-	];
+export function onRightKeyPressed(array, setArray) {
+	let clone = array;
 	let newClone = clone.map((row) => {
 		let noZeroElements = addElements(
 			row.filter((elem) => elem),
@@ -45,24 +34,13 @@ export function onRightKeyPressed(array) {
 		return zeroElements.concat(noZeroElements);
 	});
 	newClone = conditionalRandomNumber(newClone);
+	setArray(newClone);
 	console.log("right", newClone);
 }
 
 // Function invoked on Up Key Pressed
-export function onUpKeyPressed(array) {
-	// let clone = array;
-	let clone = [
-		[0, 0, 4, 4],
-		[4, 3, 0, 4],
-		[2, 2, 2, 2],
-		[2, 2, 2, 0],
-	];
-
-	// [0, 4, 2, 2]
-	// [0, 3, 2, 2]
-	// [4, 0, 2, 2]
-	// [4, 4, 2, 0]
-
+export function onUpKeyPressed(array, setArray) {
+	let clone = array;
 	clone = transpose(clone);
 	let newClone = clone.map((row) => {
 		let noZeroElements = addElements(
@@ -76,24 +54,13 @@ export function onUpKeyPressed(array) {
 	});
 	newClone = transpose(newClone);
 	newClone = conditionalRandomNumber(newClone);
+	setArray(newClone);
 	console.log("up", newClone);
 }
 
 // Function invoked on Down Key Pressed
-export function onDownKeyPressed(array) {
-	// let clone = array;
-	let clone = [
-		[0, 0, 4, 4],
-		[4, 3, 0, 4],
-		[2, 2, 2, 2],
-		[2, 2, 2, 0],
-	];
-
-	// [0, 4, 2, 2]
-	// [0, 3, 2, 2]
-	// [4, 0, 2, 2]
-	// [4, 4, 2, 0]
-
+export function onDownKeyPressed(array, setArray) {
+	let clone = array;
 	clone = transpose(clone);
 	let newClone = clone.map((row) => {
 		let noZeroElements = addElements(
@@ -107,5 +74,6 @@ export function onDownKeyPressed(array) {
 	});
 	newClone = transpose(newClone);
 	newClone = conditionalRandomNumber(newClone);
+	setArray(newClone);
 	console.log("down", newClone);
 }
