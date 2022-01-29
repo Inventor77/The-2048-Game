@@ -20,11 +20,6 @@
 .highlight_text {
 	font-weight: bold;
 }
-
-.gameover_container {
-	display: none;
-}
-
 .game_container {
 	max-width: 500px;
 	width: 500px;
@@ -139,6 +134,7 @@
 /* -------------- GameBoard ------------------ */
 
 .game_board {
+	position: relative;
 	margin: 32px 0px;
 	padding: 15px;
 	background: #bbada0;
@@ -167,7 +163,7 @@
 	height: 22.5%;
 	width: 22.5%;
 	border-radius: 3px;
-	background: #CDC1B4;
+	background: #cdc1b4;
 }
 .tile_value {
 	color: #776e65;
@@ -178,3 +174,27 @@
 /* ---- End of Tiles ---- */
 
 /* ------------- End of GameBoard ------------- */
+
+/* ----------------- GameOver ----------------- */
+
+.gameOver_container {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 36px;
+	height: 100%;
+	width: 100%;
+	top: 0px;
+	left: 0px;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 6px;
+}
+
+.message {
+	font-size: 54px;
+	font-weight: 900;
+}
+
+/* -------------- End of GameOver ------------- */

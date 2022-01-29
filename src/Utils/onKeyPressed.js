@@ -1,6 +1,7 @@
 import { addElements } from "./addElements";
 import { transpose } from "./Transpose";
 import { conditionalRandomNumber } from "./conditionalRandomNumber";
+import { checkGameStatus } from "./checkGame";
 
 // Function invoked on Left Key Pressed
 export function onLeftKeyPressed(array, setArray) {
@@ -16,7 +17,7 @@ export function onLeftKeyPressed(array, setArray) {
 		return noZeroElements.concat(zeroElements);
 	});
 	newClone = conditionalRandomNumber(newClone);
-	setArray(newClone);
+	setArray(newClone, !checkGameStatus(newClone));
 	console.log("left", newClone);
 }
 
@@ -34,7 +35,7 @@ export function onRightKeyPressed(array, setArray) {
 		return zeroElements.concat(noZeroElements);
 	});
 	newClone = conditionalRandomNumber(newClone);
-	setArray(newClone);
+	setArray(newClone, !checkGameStatus(newClone));
 	console.log("right", newClone);
 }
 
@@ -54,7 +55,7 @@ export function onUpKeyPressed(array, setArray) {
 	});
 	newClone = transpose(newClone);
 	newClone = conditionalRandomNumber(newClone);
-	setArray(newClone);
+	setArray(newClone, !checkGameStatus(newClone));
 	console.log("up", newClone);
 }
 
@@ -74,6 +75,6 @@ export function onDownKeyPressed(array, setArray) {
 	});
 	newClone = transpose(newClone);
 	newClone = conditionalRandomNumber(newClone);
-	setArray(newClone);
+	setArray(newClone, !checkGameStatus(newClone));
 	console.log("down", newClone);
 }

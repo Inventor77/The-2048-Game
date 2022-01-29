@@ -37,8 +37,9 @@ function GameBoard(props) {
 		generateArray();
 	}, []);
 
-	function setArray(arr) {
+	function setArray(arr, bool) {
 		setTileValueArray(arr);
+		setGameOver(bool);
 	}
 
 	const left = 37;
@@ -84,8 +85,8 @@ function GameBoard(props) {
 						return <Tile key={uuidv4()} value={tileValue} />;
 					});
 				})}
-				{gameOver ? <GameOver /> : ""}
 			</div>
+			{gameOver ? <GameOver /> : ""}
 		</div>
 	);
 }
