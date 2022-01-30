@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Tile from "./Tile";
 import GameOver from "./GameOver";
-// import handleKeyEvent from "../Utils/handleKeyEvent";
 import { twoAtRandom } from "../Utils/randomNumber";
 import { v4 as uuidv4 } from "uuid";
 
@@ -13,7 +12,7 @@ import {
 } from "../Utils/onKeyPressed";
 
 function GameBoard(props) {
-	const { sideLength } = props;
+	const { sideLength, changeScore, newGame } = props;
 	const [tileValueArray, setTileValueArray] = useState([]);
 	const [gameOver, setGameOver] = useState(false);
 
@@ -35,10 +34,14 @@ function GameBoard(props) {
 	// Initializing the Array
 	useEffect(() => {
 		generateArray();
-	}, []);
+	}, [newGame]);
 
-	function setArray(arr, bool) {
+	function setArray(arr, bool, score) {
 		setTileValueArray(arr);
+		setGameOver(bool);
+		changeScore(score);
+	}
+	function playAgain(bool) {
 		setGameOver(bool);
 	}
 
@@ -86,7 +89,11 @@ function GameBoard(props) {
 					});
 				})}
 			</div>
-			{gameOver ? <GameOver /> : ""}
+			{gameOver ? (
+				<GameOver tryAgain={generateArray} playAgain={playAgain} />
+			) : (
+				""
+			)}
 		</div>
 	);
 }

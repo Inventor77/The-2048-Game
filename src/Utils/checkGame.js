@@ -4,9 +4,9 @@ import { transpose } from "./Transpose";
 
 export function checkGameStatus(arr) {
 	let array = arr;
-	return (
-		ifSameConsecutive(array) ||
-		ifSameConsecutive(transpose(array)) ||
-		!~ifZero(array)
-	);
+	return !ifZero(array)
+		? ifSameConsecutive(array) || ifSameConsecutive(transpose(array))
+			? true
+			: false
+		: true;
 }

@@ -3,8 +3,9 @@ export function ifZero(array) {
 	let zCnt = 0;
 	for (let i = 0; i < array.length; i++) {
 		for (let j = 0; j < array.length; j++) {
-			if (array[i][j]) zCnt++;
+			if (array[i][j] === 0) zCnt++;
 		}
 	}
+	console.log(zCnt);
 	return zCnt ? true : false;
 }

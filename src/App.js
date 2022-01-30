@@ -6,15 +6,32 @@ import GameBoard from "./Component/GameBoard";
 
 function App() {
 	const [sideLength, setSideLength] = useState(4);
-	const changeBoardSideLength = () => {
-		setSideLength((prevState) => prevState + 4);
+	const [newGame, setNewGame] = useState(true);
+	const [score, setScore] = useState(0);
+	const changeBoardSideLength = (length) => {
+		setSideLength(length);
 	};
+	const changeScore = (value) => {
+		setScore((preValue) => preValue + value);
+	};
+	function tryNewGame(bool) {
+		setNewGame(bool);
+	}
 
 	return (
 		<div className="App">
 			<div className="game_container">
-				<Header changeSideLength={changeBoardSideLength} />
-				<GameBoard sideLength={sideLength} />
+				<Header
+					changeSideLength={changeBoardSideLength}
+					score={score}
+					newGame={newGame}
+					tryNewGame={tryNewGame}
+				/>
+				<GameBoard
+					sideLength={sideLength}
+					changeScore={changeScore}
+					newGame={newGame}
+				/>
 				<Footer />
 			</div>
 		</div>
