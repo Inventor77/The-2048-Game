@@ -1,22 +1,38 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { useLocalStorage } from "../Utils/useLocalStorage";
 
 function Header(props) {
-	const { score, newGame, tryNewGame } = props;
-	const [bestScore, setBestScore] = useLocalStorage("bestScore", 0);
+	const { sideLength, changeSideLength, score, newGame, tryNewGame } = props;
 
+	const [toggleSideLength, setToggleSideLength] = useState(true);
+	function handleToggleSideLength(bool) {
+		setToggleSideLength(!bool);
+		bool ? changeSideLength(4) : changeSideLength(8);
+	}
+	const [bestScore, setBestScore] = useLocalStorage("bestScore", 0);
+	let finalScore = Math.max(score, bestScore);
 	useEffect(() => {
-		setBestScore(Math.max(score, bestScore));
-	}, [Math.max(score, bestScore)]);
+		setBestScore(finalScore);
+	}, [finalScore]);
 	return (
 		<header className="header" id="header">
 			<div className="header_left">
-				<div className="header_title highlight_text">2048</div>
+				<div
+					className="header_title highlight_text"
+					onClick={() => {
+						handleToggleSideLength(toggleSideLength);
+					}}
+				>
+					{sideLength === 4 ? 2048 : 4096}
+				</div>
 				<div className="header_subtitle">
 					<div>
 						Join the tiles, get to
-						<span className="highlight_text"> 2048! </span>
+						<span className="highlight_text">
+							{" "}
+							{sideLength === 4 ? 2048 : 4096}!{" "}
+						</span>
 					</div>
 					<a href="#footer">
 						<div className="game_rules highlight_text">

@@ -22,6 +22,7 @@ function App() {
 		<div className="App">
 			<div className="game_container">
 				<Header
+					sideLength={sideLength}
 					changeSideLength={changeBoardSideLength}
 					score={score}
 					newGame={newGame}
@@ -32,7 +33,7 @@ function App() {
 					changeScore={changeScore}
 					newGame={newGame}
 				/>
-				<Footer />
+				<Footer sideLength={sideLength} />
 			</div>
 		</div>
 	);

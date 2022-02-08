@@ -35,7 +35,7 @@ function GameBoard(props) {
 	// Initializing the Array
 	useEffect(() => {
 		generateArray();
-	}, [newGame]);
+	}, [newGame, sideLength]);
 
 	function setArray(arr, bool, score) {
 		setTileValueArray(arr);
@@ -83,10 +83,12 @@ function GameBoard(props) {
 
 	return (
 		<div className="game_board">
-			<div className="tile_container">
+			<div className={`tile_container ${sideLength === 8 ? " for_64" : ""}`}>
 				{tileValueArray.map((row) => {
 					return row.map((tileValue) => {
-						return <Tile key={uuidv4()} value={tileValue} />;
+						return (
+							<Tile key={uuidv4()} value={tileValue} sideLength={sideLength} />
+						);
 					});
 				})}
 			</div>
