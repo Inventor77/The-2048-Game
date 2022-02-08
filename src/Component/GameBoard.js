@@ -29,6 +29,7 @@ function GameBoard(props) {
 		twoAtRandom(array);
 		twoAtRandom(array);
 		setTileValueArray(array);
+		changeScore(0);
 	}
 
 	// Initializing the Array
