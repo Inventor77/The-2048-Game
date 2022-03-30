@@ -126,6 +126,10 @@ a {
 	font-size: 18px;
 	font-weight: bold;
 }
+.action_btn:hover {
+	background: #85603f;
+	color: #fff;
+}
 
 /* _____ End of Button ______ */
 
@@ -222,3 +226,34 @@ a {
 }
 
 /* -------------- End of GameOver ------------- */
+
+/* ---------------- VisitsCount --------------- */
+
+.visits_container {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.visits_text {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #8f7a66;
+	border-radius: 0px 0px 0px 3px;
+	padding: 0 20px;
+	color: #f0f0f0;
+	height: 30px;
+	cursor: pointer;
+	text-align: center;
+	flex-shrink: 0;
+	border: none;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.visits_text:hover {
+	background: #85603f;
+	color: #fff;
+}
+/* ------------ End of VisitsCount ------------ */

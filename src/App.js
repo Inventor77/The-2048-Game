@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./Component/Header";
 import Footer from "./Component/Footer";
 import GameBoard from "./Component/GameBoard";
+import VisitCount from "./Component/VisitCount";
 
 function App() {
 	const [sideLength, setSideLength] = useState(4);
@@ -20,6 +21,7 @@ function App() {
 
 	return (
 		<div className="App">
+			<VisitCount />
 			<div className="game_container">
 				<Header
 					sideLength={sideLength}
