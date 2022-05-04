@@ -6,6 +6,5 @@ export function ifZero(array) {
 			if (array[i][j] === 0) zCnt++;
 		}
 	}
-	console.log(zCnt);
 	return zCnt ? true : false;
 }

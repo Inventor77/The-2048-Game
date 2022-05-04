@@ -10,7 +10,6 @@ import {
 export function conditionalRandomNumber(array) {
 	let clone = array;
 	const max_element = Math.max(...[].concat(...clone));
-	console.log(max_element);
 	if (max_element <= 16) {
 		twoAtRandom(clone);
 	} else if (max_element > 16 && max_element <= 64) {

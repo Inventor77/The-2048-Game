@@ -22,7 +22,6 @@ export function onLeftKeyPressed(array, setArray) {
 		return noZeroElements.concat(zeroElements);
 	});
 	newClone = conditionalRandomNumber(newClone);
-	console.log("left", score);
 	setArray(newClone, !checkGameStatus(newClone), score);
 }
 
@@ -46,7 +45,6 @@ export function onRightKeyPressed(array, setArray) {
 	});
 	newClone = conditionalRandomNumber(newClone);
 	setArray(newClone, !checkGameStatus(newClone), score);
-	console.log("right", score);
 }
 
 // Function invoked on Up Key Pressed
@@ -71,7 +69,6 @@ export function onUpKeyPressed(array, setArray) {
 	newClone = transpose(newClone);
 	newClone = conditionalRandomNumber(newClone);
 	setArray(newClone, !checkGameStatus(newClone), score);
-	console.log("up", score);
 }
 
 // Function invoked on Down Key Pressed
@@ -96,5 +93,4 @@ export function onDownKeyPressed(array, setArray) {
 	newClone = transpose(newClone);
 	newClone = conditionalRandomNumber(newClone);
 	setArray(newClone, !checkGameStatus(newClone), score);
-	console.log("down", score);
 }
