@@ -5,4 +5,4 @@
 
 ### Live Link
 
-To Play this game [Click Me]("https://the-2048-game.vercel.app/")
+To Play this game [Click Me](https://the-2048-game.vercel.app/)
